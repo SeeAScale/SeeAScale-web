@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-body {
+html {
     font-family: 'Paperlogy';
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -14,6 +14,11 @@ a {
     text-decoration: none;
     color: #000;
     background-color: #FFF;
+    transition: filter 0.1s ease;
+}
+
+a:hover {
+    filter: brightness(0.9);
 }
 
 button {
@@ -21,13 +26,9 @@ button {
     display: block;
     cursor: pointer;
     background-color: #FFF;
+    transition: filter 0.1s ease;
 }
 
-h6 {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-p {
-    font-size: 16px;
+button:hover {
+    filter: brightness(0.9);
 }
