@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--gray);
+}
+
+.logo {
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--gray);
+}
+
+.accountButton {
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: 1px solid var(--gray);
+}

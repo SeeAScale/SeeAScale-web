@@ -1,34 +1,49 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: 'Paperlogy';
-    font-size: 16px;
-    font-weight: 400;
+  font-family: 'Paperlogy';
+  font-size: 16px;
+  font-weight: 500;
 }
 
 a {
-    text-decoration: none;
-    color: #000;
-    background-color: #FFF;
-    transition: filter 0.1s ease;
+  text-decoration: none;
+  color: #000;
+  background-color: #FFF;
+  transition: filter 0.1s ease;
 }
 
 a:hover {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
 }
 
 button {
-    all: unset;
-    display: block;
-    cursor: pointer;
-    background-color: #FFF;
-    transition: filter 0.1s ease;
+  all: unset;
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #FFF;
+  transition: filter 0.1s ease;
 }
 
 button:hover {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --block-hover: #707070;
+  --gray: #B2B2B2;
+  --light-gray: #E6E6E6;
+  --red-1: #F9A7A7;
+  --red-2: #F68E8E;
+  --red-3: #EF2B2B;
+  --blue-1: #B6D3FA;
+  --blue-2: #81B1F5;
+  --blue-3: #2B7CEF;
 }

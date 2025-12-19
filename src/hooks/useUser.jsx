@@ -1,31 +1,70 @@
-import { useState, useCallback } from "react";
-import api from "@api/axios";
+import { useState, useCallback } from 'react';
+import api from '@api/axios';
 
-export default function useUser() {
-    const [name, setName] = useState();
+export default function useUser(){
+  const [username, setUsername] = useState(null);
 
-    const logIn = useCallback(async (email, password) => {
-        const payload = { email, password };
-        try {
-            const response = await api.post('/account/login', payload);
-            setName(response.data.name);
-            return {name: response.data.name};
-        }
-        catch (e) {
-            return e;
-        }
-    }, []);
+  const returnMacro = (response) => {
+    return {
+      status: response.status,
+      name: response.data?.name,
+      detail: response.data?.detail
+    }
+  }
 
-    const myName = useCallback(async () => {
-        try {
-            const response = await api.get('/account/my-name');
-            setName(response.data.name);
-            return;
-        }
-        catch (e) {
-            return e;
-        }
-    }, []);
+  const fetchMyName = useCallback(async () => {
+    try {
+      const response = await api.get('/account/my-name');
+      setUsername(response.data.name);
+      return returnMacro(response);
+    }
+    catch (e) {
+      setUsername(null);
+      return returnMacro(e.response);
+    }
+  }, []);
 
-    return { name, logIn, myName };
+  const fetchLogIn = useCallback(async (email, password) => {
+    try {
+      const payload = {
+        email: email,
+        password: password
+      }
+      const response = await api.post('/account/login', payload);
+      setUsername(response.data.name);
+      return returnMacro(response)
+    }
+    catch (e) {
+      setUsername(null);
+      return returnMacro(e.response)
+    }
+  }, []);
+
+  const fetchLogOut = useCallback(async () => {
+    try {
+      const response = await api.post('/account/logout');
+      setUsername(null);
+      return returnMacro(response)
+    }
+    catch (e) {
+      return returnMacro(e.response)
+    }
+  }, []);
+
+  const fetchPreregister = useCallback(async (email, name, password) => {
+    try {
+      const payload = {
+        email: email,
+        name: name,
+        password: password
+      };
+      const response = await api.post('account/preregister', payload)
+      return returnMacro(response) 
+    }
+    catch (e) {
+      return returnMacro(e.response)
+    }
+  }, [])
+
+  return {username, fetchLogIn, fetchLogOut, fetchMyName, fetchPreregister}
 }
